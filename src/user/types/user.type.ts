@@ -1,3 +1,3 @@
 import { User } from "../entities/user.entity";
 
-export type UserType = Omit<User, 'hashPassword'>;
+export type UserType = Omit<User, 'hashPassword' | 'password'>;
