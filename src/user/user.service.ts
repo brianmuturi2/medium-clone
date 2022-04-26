@@ -31,6 +31,10 @@ export class UserService {
     return await this.userRepository.save(newUser);
   }
 
+  async findById(id: number): Promise<User> {
+    return this.userRepository.findOne(id);
+  }
+
   async login(loginUserDto: LoginUserDto): Promise<User> {
     const user = await this.userRepository.findOne(
       {
