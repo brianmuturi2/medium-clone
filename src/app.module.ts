@@ -5,6 +5,7 @@ import { TagModule } from './tag/tag.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { AuthMiddleware } from './middlewares/auth.middleware';
+import { ArticleModule } from './article/article.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -16,7 +17,7 @@ import { AuthMiddleware } from './middlewares/auth.middleware';
     database: 'mediumclone',
     autoLoadEntities: true,
     synchronize: true
-  }), TagModule, UserModule],
+  }), TagModule, UserModule, ArticleModule],
   controllers: [AppController],
   providers: [AppService],
 })
