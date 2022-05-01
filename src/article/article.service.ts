@@ -25,6 +25,14 @@ export class ArticleService {
     return await this.articleRepository.save(article);
   }
 
+  async getArticles() {
+    return await this.articleRepository.find();
+  }
+
+  async findBySlug(slug: string): Promise<Article> {
+    return await this.articleRepository.findOne({slug});
+  }
+
   buildArticleResponse(article: Article): ArticleResponseInterface {
     return { article }
   }
@@ -32,4 +40,5 @@ export class ArticleService {
   private getSlug(title: string): string {
     return (slugify(title, {lower: true}) + '-' + ((Math.random() * Math.pow(36, 6)) | 0).toString(36));
   }
+
 }
