@@ -49,4 +49,11 @@ export class ArticleController {
       const article = await this.articleService.favoriteArticle(favoriteArticle, currentUserId);
       return this.articleService.buildArticleResponse(article);
    }
+
+   @Delete(':slug/favorite')
+   @UseGuards(AuthGuard)
+   async unfavoriteArticle(@User('id') currentUserId: number, @Param('slug') favoriteArticle: string): Promise<ArticleResponseInterface> {
+      const article = await this.articleService.unfavoriteArticle(favoriteArticle, currentUserId);
+      return this.articleService.buildArticleResponse(article);
+   }
 }
